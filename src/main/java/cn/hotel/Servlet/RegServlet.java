@@ -6,10 +6,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+
 
 import cn.hotel.Utils.DButils;
 
@@ -24,6 +25,7 @@ public class RegServlet extends HttpServlet {
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		System.out.println(username + ";"+ password);
+		
 		try (Connection conn = DButils.getConnection();){
 			System.out.println("Succesful");
 			String sql = "insert into customer values(null,?,?)";
