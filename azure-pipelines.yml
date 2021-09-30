@@ -10,6 +10,14 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+
+
+- task: JavaToolInstaller@0
+  inputs:
+    versionSpec: '8'
+    jdkArchitectureOption: 'x64'
+    cleanDestinationDirectory: true
+
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
@@ -20,8 +28,3 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-- task: JavaToolInstaller@0
-  inputs:
-    versionSpec: '8'
-    jdkArchitectureOption: 'x64'
-    cleanDestinationDirectory: true
