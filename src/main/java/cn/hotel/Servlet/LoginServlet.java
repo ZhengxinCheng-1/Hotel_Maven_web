@@ -21,8 +21,7 @@ public class LoginServlet extends HttpServlet {
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		System.out.println(username + ";"+ password);
-		
-		try (Connection conn = DButils.getConnection();){
+		try(Connection conn = DButils.getConnection();){
 			System.out.println("Connection successful");
 			String sql = "select count(*) from customer where username =? and password =?";
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -37,9 +36,12 @@ public class LoginServlet extends HttpServlet {
 					System.out.println("Error");
 				}
 			}
-		} catch (Exception e) {
+		}
+			
+				catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 	}
-
 }
+
