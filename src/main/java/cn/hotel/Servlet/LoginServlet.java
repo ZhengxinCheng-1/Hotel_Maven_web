@@ -21,27 +21,28 @@ public class LoginServlet extends HttpServlet {
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		System.out.println(username + ";"+ password);
-//		try(Connection conn = DButils.getConnection();){
-//			System.out.println("Connection successful");
-//			String sql = "select count(*) from customer where username =? and password =?";
-//			PreparedStatement ps = conn.prepareStatement(sql);
-//			ps.setString(1, username);
-//			ps.setString(2, password);
-//			ResultSet rs = ps.executeQuery();
-//			while(rs.next()) {
-//				int count = rs.getInt(1);
-//				if(count>0) {
-//					System.out.println("GET");
-//				}else {
-//					System.out.println("Error");
-//				}
-//			}
-//		}
-//			
-//				catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		
+		try{
+			Connection conn = DButils.getConnection();
+			System.out.println("Connection successful");
+			String sql = "select count(*) from customer where username =? and password =?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, username);
+			ps.setString(2, password);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				int count = rs.getInt(1);
+				if(count>0) {
+					System.out.println("GET");
+				}else {
+					System.out.println("Error");
+				}
+			}
+		}
+			
+				catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 }
 
